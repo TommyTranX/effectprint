@@ -1,0 +1,46 @@
+# Effectprint
+
+> Effectprint is an open-source Node.js CLI for deterministic behavioral checks on imperative WebMCP tools. It discovers browser-registered tools, executes each eligible tool in a fresh guarded context, and compares the effects observed for that invocation with read-only annotations and explicit contracts.
+
+Canonical repository: https://github.com/TommyTranX/effectprint
+CLI command: `effectprint`
+License: MIT
+Runtime: Node.js 20 or newer, plus Chrome or Playwright Chromium
+WebMCP snapshot: 2026-08-26 Community Group Draft
+
+Effectprint is an independent experimental project. It is not a W3C certification tool and is not affiliated with browser vendors.
+
+Versioned noninteractive demo: `npx --yes github:TommyTranX/effectprint#v0.2.0 demo`
+
+Scope: imperative WebMCP tools and cooperative, non-evasive application code. A passing report covers the captured invocation and input, not every possible behavior. Reports redact values by default. See the threat model before remote or write-enabled use.
+
+## Start here
+
+- [README](https://raw.githubusercontent.com/TommyTranX/effectprint/main/README.md): Product purpose, one-command demo, quickstart, safety defaults, scope, and references.
+- [Contract reference](https://raw.githubusercontent.com/TommyTranX/effectprint/main/docs/contracts.md): Config fields, effect matchers, violation codes, and input synthesis.
+- [CLI reference](https://raw.githubusercontent.com/TommyTranX/effectprint/main/docs/cli.md): Commands, flags, exit codes, and CI examples.
+- [Sample evidence report](https://tommytranx.github.io/effectprint/sample-report.html): Standalone human-readable output from the bundled poisoned-shop case.
+- [WebMCP current gap](https://webmachinelearning.github.io/webmcp/#misrepresentation-of-intent): Primary-source rationale for behavior-versus-declared-intent checks.
+
+## Safety and internals
+
+- [Threat model](https://raw.githubusercontent.com/TommyTranX/effectprint/main/docs/threat-model.md): Intended environments, safety boundaries, known limitations, and reporting guidance.
+- [Architecture](https://raw.githubusercontent.com/TommyTranX/effectprint/main/docs/architecture.md): Capture, execution, verification, reporting flow, project map, and invariants.
+- [Security policy](https://raw.githubusercontent.com/TommyTranX/effectprint/main/SECURITY.md): Private vulnerability reporting and reproduction requirements.
+
+## Machine-readable interfaces
+
+- [Configuration JSON Schema](https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/config.schema.json): Version 1 contract schema.
+- [Report JSON Schema](https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/report.schema.json): Version 1 audit-report schema.
+- [Fixture corpus JSON Schema](https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/corpus.schema.json): Machine-readable poisoned-tool case format.
+- [TypeScript declarations](https://raw.githubusercontent.com/TommyTranX/effectprint/main/src/index.d.ts): Public library types.
+- [Package metadata](https://raw.githubusercontent.com/TommyTranX/effectprint/main/package.json): Version, exports, runtime, keywords, repository, and CLI metadata.
+- [GitHub Action metadata](https://raw.githubusercontent.com/TommyTranX/effectprint/main/action.yml): Composite action inputs and SARIF output.
+
+## Examples and contribution
+
+- [Poisoned shop fixture](https://raw.githubusercontent.com/TommyTranX/effectprint/main/fixtures/poisoned-shop/index.html): A read-only search tool with a hidden checkout request.
+- [Fixture corpus index](https://raw.githubusercontent.com/TommyTranX/effectprint/main/fixtures/corpus.json): Declared behavior, expected effects, violations, and safety invariants.
+- [Contributing](https://raw.githubusercontent.com/TommyTranX/effectprint/main/CONTRIBUTING.md): Setup, test requirements, fixture rules, and design process.
+- [Changelog](https://raw.githubusercontent.com/TommyTranX/effectprint/main/CHANGELOG.md): Version history.
+- [Citation metadata](https://raw.githubusercontent.com/TommyTranX/effectprint/main/CITATION.cff): How to cite a release.

@@ -1,0 +1,24 @@
+name: Effect adapter or feature
+description: Propose a new observable effect, reporter, or workflow.
+title: "proposal: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: Behavioral gap
+      description: What tool behavior cannot Effectprint verify today?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal harmless example
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety and false-positive considerations
+    validations:
+      required: true

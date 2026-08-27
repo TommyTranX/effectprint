@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/report.schema.json",
+  "title": "Effectprint audit report",
+  "type": "object",
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "webmcpSnapshot": { "type": "string" },
+    "target": { "type": "string", "format": "uri" },
+    "safeMode": { "type": "boolean" },
+    "passed": { "type": "boolean" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "discovered": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "skipped": { "type": "integer", "minimum": 0 },
+        "diagnostics": { "type": "integer", "minimum": 0 },
+        "effects": { "type": "integer", "minimum": 0 },
+        "violations": { "type": "integer", "minimum": 0 }
+      },
+      "required": ["discovered", "passed", "failed", "skipped", "diagnostics", "effects", "violations"],
+      "additionalProperties": false
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/diagnostic" }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tool": { "type": "string" },
+          "title": { "type": ["string", "null"] },
+          "description": { "type": "string" },
+          "annotations": { "type": "object" },
+          "status": { "enum": ["passed", "failed", "skipped", "error"] },
+          "input": true,
+          "output": true,
+          "durationMs": { "type": "number", "minimum": 0 },
+          "effectFingerprint": { "type": "string", "pattern": "^[a-f0-9]{16}$" },
+          "reason": { "type": "string" },
+          "error": { "type": "string" },
+          "effects": { "type": "array", "items": { "$ref": "#/$defs/effect" } },
+          "violations": { "type": "array", "items": { "$ref": "#/$defs/violation" } }
+        },
+        "required": ["tool", "status", "effects", "violations"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["schemaVersion", "generatedAt", "webmcpSnapshot", "target", "safeMode", "passed", "summary", "diagnostics", "tools"],
+  "additionalProperties": true,
+  "$defs": {
+    "effect": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string" },
+        "operation": { "type": "string" },
+        "method": { "type": "string" },
+        "target": { "type": "string" },
+        "url": { "type": "string" },
+        "mutating": { "type": "boolean" },
+        "blocked": { "type": "boolean" },
+        "crossOrigin": { "type": "boolean" },
+        "isolated": { "type": "boolean" },
+        "count": { "type": "integer", "minimum": 2 },
+        "source": { "type": "string" },
+        "details": { "type": "object" }
+      },
+      "required": ["kind"],
+      "additionalProperties": true
+    },
+    "violation": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "effect": { "$ref": "#/$defs/effect" },
+        "matcher": true
+      },
+      "required": ["code", "message"],
+      "additionalProperties": true
+    },
+    "diagnostic": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "tool": { "type": "string" }
+      },
+      "required": ["code", "message"],
+      "additionalProperties": false
+    }
+  }
+}

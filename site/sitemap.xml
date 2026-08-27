@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tommytranx.github.io/effectprint/</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/index.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/sample-report.html</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/README.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/llms.txt</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/docs/contracts.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/docs/cli.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/docs/threat-model.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/docs/architecture.md</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/schemas/config.schema.json</loc></url>
+  <url><loc>https://tommytranx.github.io/effectprint/schemas/report.schema.json</loc></url>
+</urlset>

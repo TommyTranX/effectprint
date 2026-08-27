@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/TommyTranX/effectprint/security/advisories/new
+    about: Report safe-mode bypasses and security issues privately.

@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - if: matrix.node == 24
+        run: npm run pack:check
+
+  browser:
+    name: Guarded browser integration
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright-core install --with-deps chromium
+      - name: Run browser integration
+        env:
+          EFFECTPRINT_BROWSER: chromium
+        run: npm run test:integration
+      - name: Generate poisoned-shop evidence
+        run: node ./bin/effectprint.js demo --browser chromium --no-open --out .effectprint/demo.html --badge .effectprint/badge.svg --no-color
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: effectprint-evidence
+          path: .effectprint/
+          include-hidden-files: true
+          if-no-files-found: error

@@ -1,0 +1,12 @@
+node_modules/
+.effectprint/
+*.log
+.DS_Store
+coverage/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx

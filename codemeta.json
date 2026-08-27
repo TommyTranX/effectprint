@@ -1,0 +1,33 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Effectprint",
+  "description": "Behavioral checks for WebMCP tools. Observe what one audited invocation changes.",
+  "version": "0.2.0",
+  "datePublished": "2026-08-27",
+  "codeRepository": "https://github.com/TommyTranX/effectprint",
+  "issueTracker": "https://github.com/TommyTranX/effectprint/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "programmingLanguage": "JavaScript",
+  "runtimePlatform": "Node.js >=20",
+  "applicationCategory": "DeveloperApplication",
+  "keywords": [
+    "WebMCP",
+    "AI agents",
+    "behavioral contracts",
+    "security testing",
+    "Playwright"
+  ],
+  "author": {
+    "@type": "Person",
+    "givenName": "Tommy",
+    "familyName": "Tran",
+    "url": "https://github.com/TommyTranX"
+  },
+  "maintainer": {
+    "@type": "Person",
+    "givenName": "Tommy",
+    "familyName": "Tran",
+    "url": "https://github.com/TommyTranX"
+  }
+}

@@ -1,0 +1,46 @@
+name: Effectprint behavioral contract audit
+description: Audit WebMCP tool effects in a guarded Chromium context and emit CI evidence.
+author: Tommy Tran
+branding:
+  icon: shield
+  color: green
+inputs:
+  url:
+    description: Local or explicitly authorized preview URL to audit.
+    required: true
+  config:
+    description: Optional JSON config path. JavaScript config paths execute trusted Node.js code.
+    required: false
+    default: ""
+  allow_remote:
+    description: Set true for an authorized non-local preview URL.
+    required: false
+    default: "false"
+  report:
+    description: SARIF output path.
+    required: false
+    default: .effectprint/results.sarif
+outputs:
+  report:
+    description: Path to the SARIF report.
+    value: ${{ inputs.report }}
+runs:
+  using: composite
+  steps:
+    - name: Install Effectprint and audit browser
+      shell: bash
+      run: |
+        npm install --prefix "$RUNNER_TEMP/effectprint-action" --no-save "$GITHUB_ACTION_PATH"
+        "$RUNNER_TEMP/effectprint-action/node_modules/.bin/playwright-core" install --with-deps chromium
+    - name: Audit WebMCP behavior
+      shell: bash
+      env:
+        EFFECTPRINT_URL: ${{ inputs.url }}
+        EFFECTPRINT_CONFIG: ${{ inputs.config }}
+        EFFECTPRINT_ALLOW_REMOTE: ${{ inputs.allow_remote }}
+        EFFECTPRINT_REPORT: ${{ inputs.report }}
+      run: |
+        args=(audit "$EFFECTPRINT_URL" --browser chromium --format sarif --out "$EFFECTPRINT_REPORT" --no-color)
+        if [[ -n "$EFFECTPRINT_CONFIG" ]]; then args+=(--config "$EFFECTPRINT_CONFIG"); fi
+        if [[ "$EFFECTPRINT_ALLOW_REMOTE" == "true" ]]; then args+=(--allow-remote); fi
+        "$RUNNER_TEMP/effectprint-action/node_modules/.bin/effectprint" "${args[@]}"

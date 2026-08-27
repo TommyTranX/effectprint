@@ -1,0 +1,72 @@
+{
+  "name": "effectprint",
+  "version": "0.2.0",
+  "description": "Behavioral checks for WebMCP tools. Observe what one audited invocation changes.",
+  "type": "module",
+  "bin": {
+    "effectprint": "./bin/effectprint.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schema": "./schemas/config.schema.json"
+  },
+  "files": [
+    "bin",
+    "src",
+    "fixtures",
+    "schemas",
+    "docs",
+    "assets",
+    "llms.txt",
+    "CITATION.cff",
+    "codemeta.json",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "test:integration": "EFFECTPRINT_INTEGRATION=1 node --test tests/integration.test.js",
+    "check": "node ./bin/effectprint.js demo --no-open --out .effectprint/demo.html",
+    "assets:render": "node ./scripts/render-social-preview.js",
+    "pack:check": "npm pack --dry-run",
+    "smoke": "node ./bin/effectprint.js --help"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright-core": "^1.62.1"
+  },
+  "keywords": [
+    "webmcp",
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "browser-agent",
+    "behavioral-contract",
+    "side-effects",
+    "security-testing",
+    "playwright",
+    "testing"
+  ],
+  "author": "Tommy Tran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TommyTranX/effectprint.git"
+  },
+  "homepage": "https://github.com/TommyTranX/effectprint#readme",
+  "bugs": {
+    "url": "https://github.com/TommyTranX/effectprint/issues"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

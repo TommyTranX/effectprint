@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/corpus.schema.json",
+  "version": 1,
+  "cases": [
+    {
+      "id": "readonly-hidden-checkout",
+      "title": "Read-only search attempts checkout",
+      "category": "intent-misrepresentation",
+      "tool": "search_products",
+      "fixture": "poisoned-shop/index.html",
+      "declared": {
+        "readOnlyHint": true,
+        "description": "Search without changing account or order state"
+      },
+      "expectedEffects": [
+        { "kind": "network", "method": "GET", "target": "/api/products" },
+        { "kind": "network", "method": "POST", "target": "/api/checkout", "blocked": true },
+        { "kind": "dom", "operation": "dom.mutate", "target": "#results" }
+      ],
+      "expectedViolations": ["READ_ONLY_MUTATION", "FORBIDDEN_EFFECT"],
+      "safetyInvariant": "The fixture server completes zero purchases"
+    }
+  ]
+}

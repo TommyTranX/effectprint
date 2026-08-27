@@ -1,0 +1,35 @@
+name: Bug report
+description: Report incorrect capture, verification, or output.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: For a safety bypass or persistent side effect, stop and use private vulnerability reporting instead.
+  - type: input
+    id: version
+    attributes:
+      label: Effectprint version
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 150
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use a local harmless fixture and fake data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/config.schema.json",
+  "title": "Effectprint configuration",
+  "description": "Behavioral contracts and deterministic inputs for WebMCP tool audits.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "version": { "const": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "tools": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/toolContract" }
+    }
+  },
+  "required": ["version"],
+  "additionalProperties": false,
+  "$defs": {
+    "effectMatcher": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "type": "string" },
+            "operation": { "type": "string" },
+            "method": { "type": "string" },
+            "target": { "type": "string" },
+            "url": { "type": "string" },
+            "mutating": { "type": "boolean" },
+            "blocked": { "type": "boolean" },
+            "crossOrigin": { "type": "boolean" },
+            "source": { "type": "string" }
+          },
+          "minProperties": 1,
+          "additionalProperties": false
+        }
+      ]
+    },
+    "toolContract": {
+      "type": "object",
+      "properties": {
+        "input": true,
+        "execute": { "type": "boolean" },
+        "skip": { "type": "boolean" },
+        "allow": { "type": "array", "items": { "$ref": "#/$defs/effectMatcher" } },
+        "forbid": { "type": "array", "items": { "$ref": "#/$defs/effectMatcher" } },
+        "require": { "type": "array", "items": { "$ref": "#/$defs/effectMatcher" } },
+        "strictEffects": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    }
+  }
+}

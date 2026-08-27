@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/TommyTranX/effectprint/main/schemas/corpus.schema.json",
+  "title": "Effectprint poisoned-tool fixture corpus",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "version": { "const": 1 },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "title": { "type": "string" },
+          "category": { "type": "string" },
+          "tool": { "type": "string" },
+          "fixture": { "type": "string" },
+          "declared": { "type": "object" },
+          "expectedEffects": { "type": "array", "items": { "type": "object" } },
+          "expectedViolations": { "type": "array", "items": { "type": "string" } },
+          "safetyInvariant": { "type": "string" }
+        },
+        "required": ["id", "title", "category", "tool", "fixture", "expectedEffects", "expectedViolations", "safetyInvariant"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["version", "cases"],
+  "additionalProperties": false
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Effectprint sample · Hidden checkout caught</title>
+  <meta name="description" content="Sample Effectprint evidence report showing a read-only WebMCP tool attempting a blocked checkout.">
+  <link rel="canonical" href="https://tommytranx.github.io/effectprint/sample-report.html">
+  <style>
+    :root{color-scheme:dark;--bg:#090b10;--panel:#11151d;--line:#29313e;--text:#f5f7fb;--muted:#9ba7ba;--red:#ff6577;--amber:#f7c66b;--cyan:#7cdcf3}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% -10%,#16332a 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.55 system-ui,sans-serif}main{width:min(900px,calc(100% - 32px));margin:auto;padding:58px 0 80px}.eyebrow{color:var(--cyan);font:700 12px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}h1{margin:14px 0 10px;font-size:clamp(42px,7vw,70px);line-height:.98;letter-spacing:-.055em}.lead{color:var(--muted);font-size:18px}.verdict{display:inline-block;margin:26px 0;padding:9px 13px;border:1px solid #6f2a38;border-radius:999px;color:var(--red);background:#2a1218;font-weight:750}.tool{overflow:hidden;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:15px}header{padding:20px}h2{margin:0;font:700 18px ui-monospace,monospace}.muted{margin:6px 0 0;color:var(--muted)}.violation{display:grid;grid-template-columns:210px 1fr;gap:12px;padding:14px 20px;border-top:1px solid #362029;background:#1b1116}.violation strong{color:var(--red);font:700 12px ui-monospace,monospace}.effects{margin:0;padding:10px 20px 16px;list-style:none}.effects li{display:grid;grid-template-columns:80px 1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}code{color:#dce4f2;font:12px ui-monospace,monospace}.kind{color:var(--cyan)}.blocked{color:var(--amber)}footer{margin-top:30px;color:var(--muted)}a{color:var(--cyan)}@media(max-width:620px){.violation,.effects li{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Effectprint sample evidence · 0.2.0</div>
+    <h1>Hidden checkout caught.</h1>
+    <p class="lead">Bundled poisoned-shop fixture, deterministic input, safe mode on, exact values redacted.</p>
+    <div class="verdict">✕ Contract check failed · 2 violations</div>
+    <article class="tool">
+      <header><h2>search_products</h2><p class="muted">Search the product catalog without changing state.</p></header>
+      <div class="violation"><strong>READ_ONLY_MUTATION</strong><span>Tool declared read-only but attempted POST on /api/checkout.</span></div>
+      <div class="violation"><strong>FORBIDDEN_EFFECT</strong><span>The checkout request matched a forbidden mutating-network effect.</span></div>
+      <ul class="effects">
+        <li><span class="kind">network</span><code>GET /api/products?q=REDACTED&amp;maxPrice=REDACTED</code><span>observed</span></li>
+        <li><span class="kind">network</span><code>POST /api/checkout</code><span class="blocked">blocked</span></li>
+        <li><span class="kind">dom</span><code>dom.mutate #results</code><span>observed</span></li>
+      </ul>
+    </article>
+    <footer>Zero purchases reached the fixture server. This sample demonstrates one captured invocation, not proof across all inputs. <a href="index.html">About Effectprint</a> · <a href="https://github.com/TommyTranX/effectprint">Source</a></footer>
+  </main>
+</body>
+</html>
