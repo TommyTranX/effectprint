@@ -5,7 +5,7 @@ Behavioral checks for WebMCP tools. Observe what one audited invocation changes.
 A schema can describe intent. Effectprint checks behavior. It executes each eligible WebMCP tool in a fresh guarded browser context, fingerprints the observed effects, and fails when invocation and contract diverge.
 
 ```bash
-npx --yes github:TommyTranX/effectprint#v0.2.0 demo
+npx --yes effectprint demo
 ```
 
 The bundled demo catches a `search_products` tool marked read-only attempting a hidden `POST /api/checkout`. The request is blocked and reported as `READ_ONLY_MUTATION`.

@@ -8,21 +8,34 @@
 
 <p align="center">
   <a href="https://github.com/TommyTranX/effectprint/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/TommyTranX/effectprint/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://www.npmjs.com/package/effectprint"><img alt="npm version" src="https://img.shields.io/npm/v/effectprint"></a>
   <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-2ea44f"></a>
   <a href="llms.txt"><img alt="llms.txt" src="https://img.shields.io/badge/LLM-readable-7cdcf3"></a>
 </p>
 
+<p align="center">
+  <a href="#quick-demo"><strong>Run the demo</strong></a> ·
+  <a href="https://tommytranx.github.io/effectprint/sample-report.html"><strong>View sample report</strong></a> ·
+  <a href="https://github.com/marketplace/actions/effectprint-behavioral-contract-audit"><strong>Add to CI</strong></a> ·
+  <a href="https://github.com/TommyTranX/effectprint"><strong>Star on GitHub</strong></a>
+</p>
+
+[WebMCP](https://webmachinelearning.github.io/webmcp/) is an emerging browser API that lets websites expose structured tools to AI agents.
+
 Effectprint is an open-source, deterministic behavioral contract auditor for imperative WebMCP tools. Schema checks tell you whether an agent can call a tool; Effectprint checks whether one audited invocation stayed inside its claimed effect boundary.
 
-Requires Node.js 20+ and Chrome, or Playwright Chromium. Run the demo directly from GitHub without a registry package:
+<a id="quick-demo"></a>
+
+Requires Node.js 20+ and Chrome, or Playwright Chromium. Run the deterministic demo from npm:
 
 ```bash
-npx --yes github:TommyTranX/effectprint#v0.2.0 demo
+npx --yes effectprint demo
 ```
 
 The demo launches a disposable shop, discovers a `search_products` tool marked `readOnlyHint: true`, and calls it with deterministic input. The tool quietly attempts `POST /api/checkout`. Effectprint records the attempt, blocks it, and produces a standalone evidence report. No model key is required.
 
 [Open the pre-generated sample report](https://tommytranx.github.io/effectprint/sample-report.html) to see the result without installing a browser.
+[Review two reproducible audits of GoogleChromeLabs WebMCP demos](docs/real-world-audits.md) to see strict contracts applied to public examples at an exact upstream commit.
 
 ```text
 Effectprint  FAIL
@@ -49,10 +62,10 @@ Effectprint is complementary to the [WebMCP Tool Inspector](https://github.com/b
 
 ## Audit your local app
 
-Install Effectprint from the repository, start your development server, then run:
+Install Effectprint, start your development server, then run:
 
 ```bash
-npm install --save-dev github:TommyTranX/effectprint#v0.2.0
+npm install --save-dev effectprint
 npx effectprint audit http://127.0.0.1:3000
 ```
 
@@ -172,7 +185,7 @@ Behavioral integrity should be reproducible. Effectprint uses deterministic sche
 
 ## Contributing
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md). Good first contributions include new poisoned fixtures, effect adapters, framework examples, and false-positive reductions. Please report security issues through [SECURITY.md](SECURITY.md), not a public issue.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) and the [public roadmap](ROADMAP.md). Good first contributions include new poisoned fixtures, effect adapters, framework examples, and false-positive reductions. Please report security issues through [SECURITY.md](SECURITY.md), not a public issue.
 
 ## References
 

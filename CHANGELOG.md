@@ -2,6 +2,13 @@
 
 All notable changes to Effectprint are documented here.
 
+## 0.2.1 - 2026-08-28
+
+- Added the public npm package quickstart and corrected the CLI binary mapping for current npm clients.
+- Added an OIDC trusted-publishing workflow with provenance, immutable action pins, release-tag validation, tests, and package verification.
+- Added a public roadmap, code of conduct, and pull-request checklist.
+- Improved the README conversion path, package metadata, Pages deployment, and LLM-readable project index.
+
 ## 0.2.0 - 2026-08-27
 
 - Initial public release of Effectprint.

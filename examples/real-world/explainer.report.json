@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-28T19:18:12.798Z",
+  "webmcpSnapshot": "2026-08-26",
+  "target": "http://127.0.0.1:18181/",
+  "safeMode": true,
+  "passed": true,
+  "summary": {
+    "discovered": 3,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 2,
+    "diagnostics": 0,
+    "effects": 3,
+    "violations": 0
+  },
+  "diagnostics": [],
+  "tools": [
+    {
+      "tool": "getAvailability",
+      "title": "Get booking availability",
+      "description": "List bookable consultation times within a date range. Returns an object keyed by ISO date with arrays of 24h HH:MM times.",
+      "annotations": { "readOnlyHint": true },
+      "durationMs": 9.2,
+      "effectFingerprint": "13247628c519440c",
+      "effects": [
+        {
+          "kind": "dom",
+          "operation": "dom.mutate",
+          "target": "li.tool-item.is-called",
+          "blocked": false,
+          "details": { "added": 0, "attributes": 2, "removed": 0, "text": 0 }
+        },
+        {
+          "kind": "dom",
+          "operation": "dom.mutate",
+          "target": "#tool-call",
+          "blocked": false,
+          "details": { "added": 0, "attributes": 1, "removed": 0, "text": 0 }
+        },
+        {
+          "kind": "dom",
+          "operation": "dom.mutate",
+          "target": "#tool-call-code",
+          "blocked": false,
+          "details": { "added": 1, "attributes": 0, "removed": 0, "text": 0 }
+        }
+      ],
+      "violations": [],
+      "status": "passed"
+    },
+    {
+      "tool": "bookSlot",
+      "title": "Book a consultation slot",
+      "description": "Reserve a 30-minute consultation at a specific date and time. Drives the on-page booking widget so the user sees what was booked.",
+      "annotations": { "readOnlyHint": false },
+      "status": "skipped",
+      "reason": "disabled by contract",
+      "effects": [],
+      "violations": []
+    },
+    {
+      "tool": "cancelBooking",
+      "title": "Cancel a booking",
+      "description": "Cancel a previously confirmed booking by its confirmation id.",
+      "annotations": { "readOnlyHint": false },
+      "status": "skipped",
+      "reason": "disabled by contract",
+      "effects": [],
+      "violations": []
+    }
+  ]
+}

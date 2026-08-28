@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schemas/config.schema.json",
+  "version": 1,
+  "url": "http://127.0.0.1:18181/",
+  "tools": {
+    "getAvailability": {
+      "input": {
+        "startDate": "2026-08-28",
+        "endDate": "2026-09-04"
+      },
+      "allow": [
+        {
+          "kind": "dom",
+          "operation": "dom.mutate"
+        }
+      ],
+      "forbid": [
+        { "kind": "network", "mutating": true },
+        { "kind": "storage" },
+        { "kind": "cookie" },
+        { "kind": "navigation" },
+        { "kind": "clipboard" },
+        { "kind": "download" },
+        { "kind": "form" }
+      ],
+      "strictEffects": true
+    },
+    "bookSlot": { "skip": true },
+    "cancelBooking": { "skip": true }
+  }
+}

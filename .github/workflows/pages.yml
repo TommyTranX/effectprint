@@ -27,10 +27,11 @@ jobs:
         run: |
           mkdir -p _site/docs _site/schemas _site/assets
           cp site/index.html site/index.md site/sample-report.html site/robots.txt site/sitemap.xml _site/
-          cp README.md llms.txt CHANGELOG.md SECURITY.md CONTRIBUTING.md CITATION.cff _site/
+          cp README.md llms.txt CHANGELOG.md ROADMAP.md CODE_OF_CONDUCT.md SECURITY.md CONTRIBUTING.md CITATION.cff _site/
           cp docs/*.md _site/docs/
           cp schemas/*.json _site/schemas/
           cp assets/* _site/assets/
+          cp -R examples _site/
       - uses: actions/upload-pages-artifact@v5
       - name: Deploy
         id: deployment

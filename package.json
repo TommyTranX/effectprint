@@ -1,10 +1,10 @@
 {
   "name": "effectprint",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Behavioral checks for WebMCP tools. Observe what one audited invocation changes.",
   "type": "module",
   "bin": {
-    "effectprint": "./bin/effectprint.js"
+    "effectprint": "bin/effectprint.js"
   },
   "exports": {
     ".": {
@@ -17,6 +17,7 @@
     "bin",
     "src",
     "fixtures",
+    "examples",
     "schemas",
     "docs",
     "assets",
@@ -24,7 +25,9 @@
     "CITATION.cff",
     "codemeta.json",
     "CHANGELOG.md",
+    "ROADMAP.md",
     "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
     "SECURITY.md",
     "README.md",
     "LICENSE"
@@ -57,11 +60,16 @@
   ],
   "author": "Tommy Tran",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TommyTranX/effectprint.git"
   },
-  "homepage": "https://github.com/TommyTranX/effectprint#readme",
+  "homepage": "https://tommytranx.github.io/effectprint/",
   "bugs": {
     "url": "https://github.com/TommyTranX/effectprint/issues"
   },

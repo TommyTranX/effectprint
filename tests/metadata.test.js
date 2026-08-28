@@ -52,7 +52,7 @@ test("site advertises Markdown and LLM discovery endpoints", async () => {
   assert.match(site, /"@type": "SoftwareSourceCode"/);
 });
 
-test("first-run surfaces do not depend on an unpublished registry package", async () => {
+test("first-run surfaces use the published package or bundled action", async () => {
   const surfaces = await Promise.all([
     read("README.md"),
     read("llms.txt"),
@@ -60,9 +60,11 @@ test("first-run surfaces do not depend on an unpublished registry package", asyn
     read("site/index.md"),
     read("action.yml"),
   ]);
-  for (const contents of surfaces) {
-    assert.doesNotMatch(contents, /npmjs\.com|effectprint@(?:latest|\d)|effectprint_version/);
+  assert.match(surfaces[0], /npx --yes effectprint demo/);
+  assert.match(surfaces[0], /npm install --save-dev effectprint/);
+  assert.match(surfaces[1], /https:\/\/www\.npmjs\.com\/package\/effectprint/);
+  for (const contents of surfaces.slice(0, 4)) {
+    assert.doesNotMatch(contents, /github:TommyTranX\/effectprint#/);
   }
-  assert.match(surfaces[0], /github:TommyTranX\/effectprint/);
   assert.match(surfaces[4], /\$GITHUB_ACTION_PATH/);
 });

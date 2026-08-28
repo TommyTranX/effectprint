@@ -8,8 +8,8 @@ authors:
 repository-code: "https://github.com/TommyTranX/effectprint"
 url: "https://github.com/TommyTranX/effectprint"
 license: MIT
-version: 0.2.0
-date-released: 2026-08-27
+version: 0.2.1
+date-released: 2026-08-28
 keywords:
   - WebMCP
   - AI agents

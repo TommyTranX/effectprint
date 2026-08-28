@@ -1,9 +1,9 @@
 # CLI reference
 
-Install the current repository version in your project before using the commands below:
+Install Effectprint from npm before using the commands below:
 
 ```bash
-npm install --save-dev github:TommyTranX/effectprint#v0.2.0
+npm install --save-dev effectprint
 ```
 
 ## `effectprint demo`

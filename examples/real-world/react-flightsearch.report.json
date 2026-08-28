@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-28T19:19:37.076Z",
+  "webmcpSnapshot": "2026-08-26",
+  "target": "http://127.0.0.1:18182/",
+  "safeMode": true,
+  "passed": true,
+  "summary": {
+    "discovered": 4,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 3,
+    "diagnostics": 0,
+    "effects": 0,
+    "violations": 0
+  },
+  "diagnostics": [],
+  "tools": [
+    {
+      "tool": "listFlights",
+      "title": null,
+      "description": "Returns the flights currently visible on the results page after all filters have been applied.",
+      "annotations": { "readOnlyHint": true },
+      "durationMs": 0.1,
+      "effectFingerprint": "4f53cda18c2baa0c",
+      "effects": [],
+      "violations": [],
+      "status": "passed"
+    },
+    {
+      "tool": "setFilters",
+      "title": null,
+      "description": "Sets the filters for flights.",
+      "annotations": { "readOnlyHint": false },
+      "status": "skipped",
+      "reason": "disabled by contract",
+      "effects": [],
+      "violations": []
+    },
+    {
+      "tool": "resetFilters",
+      "title": null,
+      "description": "Resets all filters to their default values.",
+      "annotations": { "readOnlyHint": false },
+      "status": "skipped",
+      "reason": "disabled by contract",
+      "effects": [],
+      "violations": []
+    },
+    {
+      "tool": "searchFlights",
+      "title": null,
+      "description": "Searches for flights with the given parameters.",
+      "annotations": { "readOnlyHint": false },
+      "status": "skipped",
+      "reason": "disabled by contract",
+      "effects": [],
+      "violations": []
+    }
+  ]
+}

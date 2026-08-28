@@ -64,3 +64,14 @@ test("representative report validates against its published schema", async () =>
   };
   assert.equal(validate(value), true, JSON.stringify(validate.errors));
 });
+
+test("real-world contracts and reports validate against published schemas", async () => {
+  const config = validator().compile(await json("schemas/config.schema.json"));
+  const report = validator().compile(await json("schemas/report.schema.json"));
+  for (const name of ["explainer", "react-flightsearch"]) {
+    const contract = await json(`examples/real-world/${name}.effectprint.json`);
+    assert.equal(config(contract), true, `${name} contract: ${JSON.stringify(config.errors)}`);
+    const evidence = await json(`examples/real-world/${name}.report.json`);
+    assert.equal(report(evidence), true, `${name} report: ${JSON.stringify(report.errors)}`);
+  }
+});

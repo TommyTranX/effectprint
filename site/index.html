@@ -23,7 +23,7 @@
     "programmingLanguage": "JavaScript",
     "runtimePlatform": "Node.js 20 or newer",
     "license": "https://spdx.org/licenses/MIT",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "keywords": "WebMCP, AI agents, behavioral contracts, security testing, Playwright",
     "author": { "@type": "Person", "name": "Tommy Tran", "url": "https://github.com/TommyTranX" }
   }
@@ -39,7 +39,7 @@
     <h1>Observe what an agent tool actually changes.</h1>
     <p class="lead">A schema can describe intent. Effectprint checks behavior. It executes each eligible WebMCP tool in a fresh guarded browser context, fingerprints the observed effects, and fails when invocation and contract diverge.</p>
     <div class="actions"><a class="button primary" href="https://github.com/TommyTranX/effectprint">View on GitHub</a><a class="button" href="sample-report.html">Sample report</a><a class="button" href="llms.txt">LLM index</a></div>
-    <pre><code>npx --yes github:TommyTranX/effectprint#v0.2.0 demo
+    <pre><code>npx --yes effectprint demo
 
 ✗ search_products
   READ_ONLY_MUTATION  attempted POST /api/checkout

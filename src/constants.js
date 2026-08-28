@@ -1,5 +1,5 @@
 export const PACKAGE_NAME = "effectprint";
-export const VERSION = "0.2.0";
+export const VERSION = "0.2.1";
 export const CONTRACT_VERSION = 1;
 export const WEBMCP_SNAPSHOT = "2026-08-26";
 
